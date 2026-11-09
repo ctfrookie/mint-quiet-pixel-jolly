@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", "Noto Sans SC", sans-serif;
+  --font-sans: "Noto Sans SC", system-ui, sans-serif;
+
+  --color-bg: #07080c;
+  --color-fg: #f4f0e6;
+  --color-muted: #a39c91;
+  --color-line: rgb(255 255 255 / 14%);
+  --color-glass: rgb(14 16 22 / 94%);
+  --color-accent: #d6ff3f;
+  --color-ink: #14160a;
+  --color-danger: #ff6b4a;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button,
+  [role="button"],
+  input[type="range"] {
+    touch-action: manipulation;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+.lumen-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.75rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lumen-range:focus {
+  outline: none;
+}
+
+.lumen-range:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.lumen-range::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-fg) 28%, transparent);
+}
+
+.lumen-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: -0.5rem;
+  border: 2px solid var(--color-bg);
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+
+.lumen-range::-moz-range-track {
+  height: 2px;
+  border: none;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-fg) 28%, transparent);
+}
+
+.lumen-range::-moz-range-thumb {
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid var(--color-bg);
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+
+.vu-bar {
+  height: 100%;
+  width: 2px;
+  transform-origin: bottom;
+  border-radius: 999px;
+  background: var(--color-accent);
+  transform: scaleY(calc(0.18 + var(--bass, 0.15) * var(--vu)));
+}
